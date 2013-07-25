@@ -1,4 +1,3 @@
-require 'bank_job/agents'
 require 'hashie/mash'
 
 module BankJob
