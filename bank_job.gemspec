@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = BankJob::VERSION
   spec.authors       = ["kkosuge"]
   spec.email         = ["root@kksg.net"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{銀行口座から預金情報を取ってくるライブラリ}
+  spec.summary       = %q{銀行口座から預金情報を取ってくるライブラリ}
+  spec.homepage      = "https://github.com/kkosuge/bank_job/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
