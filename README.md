@@ -4,27 +4,29 @@ TODO: Write a gem description
 
 ## Installation
 
-
-    git clone git@github.com:kkosuge/bank_job.git
-    cd bank_job
-    rake install
-    
+```
+git clone git@github.com:kkosuge/bank_job.git
+cd bank_job
+rake install
+```
 
 ## Usage
 
-    require 'bank_job'
-    require 'bank_job_smbc'
-    
-    bj = BankJob.new
+```ruby
+require 'bank_job'
+require 'bank_job_smbc'
 
-    bj.register do |bank|
-      bank.strategy = BankJob::Strategy::SMBC.new
-      bank.number   = '0123456789'
-      bank.pin      = '01234'
-    end
+bj = BankJob.new
 
-    p bj.agents.first.deposits #=> 100円
-    
+bj.register do |bank|
+  bank.strategy = BankJob::Strategy::SMBC.new
+  bank.number   = '0123456789'
+  bank.pin      = '01234'
+end
+
+p bj.agents.first.deposits #=> 500,000,000円
+```
+
 ## Contributing
 
 1. Fork it
