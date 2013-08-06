@@ -46,7 +46,7 @@ module BankJob
               balance: tds[4].text,
             })
           end
-        end
+        end.reverse
       end
 
       def deposit(url = nil)
