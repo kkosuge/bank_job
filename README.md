@@ -13,6 +13,7 @@ TODO: Write a gem description
 ## Usage
 
     require 'bank_job'
+    require 'bank_job_smbc'
     
     bj = BankJob.new
 
