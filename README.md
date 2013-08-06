@@ -1,6 +1,7 @@
 # BankJob
 
-TODO: Write a gem description
+銀行口座から預金情報を取ってくるライブラリです。
+http://blog.kksg.net/posts/komono2
 
 ## Installation
 
