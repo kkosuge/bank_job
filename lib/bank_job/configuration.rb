@@ -8,6 +8,7 @@ module BankJob
       :key,
       :number,
       :pin,
+      :questions,
     ].freeze
 
     attr_accessor *OPTION_KEYS, :agents
