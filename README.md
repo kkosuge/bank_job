@@ -13,6 +13,8 @@ rake install
 
 ## Usage
 
+### SMBC
+
 ```ruby
 require 'bank_job'
 require 'bank_job_smbc'
@@ -23,6 +25,28 @@ bj.register do |bank|
   bank.strategy = BankJob::Strategy::SMBC.new
   bank.number   = '0123456789'
   bank.pin      = '01234'
+end
+
+p bj.agents.first.deposits #=> 500,000,000円
+```
+
+### Mizuho
+
+```ruby
+require 'bank_job'
+require 'bank_job_mizuho'
+
+bj = BankJob.new
+
+bj.register do |bank|
+  bank.strategy = BankJob::Strategy::Mizuho.new
+  bank.number   = '0123456789'
+  bank.pin      = 'password'
+  bank.quetions = [
+    { question: '中学校の時のクラブ活動は何ですか（○○部、○○クラブ）', answer: '○○部' },
+    { question: '父親の誕生日はいつですか（例：１２月２５日）', answer: '１２月２５日' },
+    { question: '母親の誕生日はいつですか（例：５月１４日）', answer: '５月１４日' },
+  ]
 end
 
 p bj.agents.first.deposits #=> 500,000,000円
