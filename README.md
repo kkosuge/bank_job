@@ -44,8 +44,30 @@ bj.register do |bank|
   bank.pin      = 'password'
   bank.quetions = [
     { question: '中学校の時のクラブ活動は何ですか（○○部、○○クラブ）', answer: '○○部' },
-    { question: '父親の誕生日はいつですか（例：１２月２５日）', answer: '１２月２５日' },
-    { question: '母親の誕生日はいつですか（例：５月１４日）', answer: '５月１４日' },
+    { question: '父親の誕生日はいつですか（例：１２月２５日）',       answer: '１２月２５日' },
+    { question: '母親の誕生日はいつですか（例：５月１４日）',         answer: '５月１４日' },
+  ]
+end
+
+p bj.agents.first.deposits #=> 500,000,000円
+```
+
+### Yucho
+
+```ruby
+require 'bank_job'
+require 'bank_job_yucho'
+
+bj = BankJob.new
+
+bj.register do |bank|
+  bank.strategy = BankJob::Strategy::Yucho.new
+  bank.number   = '0123456789012'
+  bank.pin      = 'password'
+  bank.quetions = [
+    { question: '最も好きな動物は何ですか？', answer: '...' },
+    { question: '最も好きな花は何ですか？',   answer: '...' },
+    { question: '座右の銘は何ですか？',       answer: '...' },
   ]
 end
 
