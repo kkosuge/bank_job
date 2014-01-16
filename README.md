@@ -42,7 +42,7 @@ bj.register do |bank|
   bank.strategy = BankJob::Strategy::Mizuho.new
   bank.number   = '0123456789'
   bank.pin      = 'password'
-  bank.quetions = [
+  bank.questions = [
     { question: '中学校の時のクラブ活動は何ですか（○○部、○○クラブ）', answer: '○○部' },
     { question: '父親の誕生日はいつですか（例：１２月２５日）',       answer: '１２月２５日' },
     { question: '母親の誕生日はいつですか（例：５月１４日）',         answer: '５月１４日' },
@@ -64,7 +64,7 @@ bj.register do |bank|
   bank.strategy = BankJob::Strategy::Yucho.new
   bank.number   = '0123456789012'
   bank.pin      = 'password'
-  bank.quetions = [
+  bank.questions = [
     { question: '最も好きな動物は何ですか？', answer: '...' },
     { question: '最も好きな花は何ですか？',   answer: '...' },
     { question: '座右の銘は何ですか？',       answer: '...' },
