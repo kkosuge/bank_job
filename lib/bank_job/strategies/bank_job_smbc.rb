@@ -6,21 +6,21 @@ module BankJob
       include BankJob::Strategy
 
       def login
-        page = agent.get("https://direct.smbc.co.jp/aib/aibgsjsw5001.jsp")
-        form = page.form_with(name: 'Login')
-        form.action      = form['domainSumitomo']
-        form['USRID']    = @number
-        form['USRID1']   = @number[0..4]
-        form['USRID2']   = @number[5..9]
-        form['PASSWORD'] = @pin
-        form.submit
+        page                = agent.get("https://direct.smbc.co.jp/aib/aibgsjsw5001.jsp")
+        form                = page.form_with(name: 'Login')
+        form.action         = form['domainSumitomo']
+        form['S_BRANCH_CD'] = @number[0..2]
+        form['S_ACCNT_NO']  = @number[3..9]
+        form['PASSWORD']    = @pin
+        page                = form.submit
+        raise "Login failed" unless page.uri.to_s == 'https://direct3.smbc.co.jp/servlet/com.smbc.SUPRedirectServlet'
+        page
       end
 
       def accounts
-        login
-        page = agent.get('https://direct3.smbc.co.jp/servlet/com.smbc.SUPRedirectServlet')
+        page = login
         [].tap do |accounts|
-          page.root.css('.totolink2 li a').each do |account|
+          page.root.css('.dataTable td .detailsBtn a').each do |account|
             accounts << Hashie::Mash.new({
               url:    account[:href],
               number: account.text.scan(/\d+\Z/).first,
@@ -46,7 +46,7 @@ module BankJob
               balance: tds[4].text,
             })
           end
-        end.reverse
+        end
       end
 
       def deposit(url = nil)
